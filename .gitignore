@@ -1,0 +1,7 @@
+*.iml
+.idea/*
+!.idea/encodings.xml
+!.idea/jsLinters/*
+
+build/
+target/
