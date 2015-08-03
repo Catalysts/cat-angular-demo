@@ -4,41 +4,43 @@ import cc.catalysts.angular.demo.dto.BookDto;
 import cc.catalysts.angular.demo.entity.Book;
 import cc.catalysts.angular.demo.repository.BookRepository;
 import cc.catalysts.angular.demo.service.BookService;
+import cc.catalysts.angular.spring.core.SearchRequest;
+import cc.catalysts.angular.spring.service.AbstractCrudlService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Service
 @Transactional(rollbackFor = Throwable.class)
-public class BookServiceImpl implements BookService {
-    private BookRepository bookRepository;
+public class BookServiceImpl  extends AbstractCrudlService<Long, Book, BookDto, BookDto, SearchRequest> implements BookService {
 
     @Autowired
-    public BookServiceImpl(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
-    }
-
-    private static BookDto toDto(Book book) {
-        BookDto dto = new BookDto();
-        dto.setId(book.getId());
-        dto.setName(book.getName());
-
-        return dto;
+    public BookServiceImpl(BookRepository bookRepository, ConversionService conversionService) {
+        super(bookRepository, conversionService);
     }
 
     @Override
-    public BookDto get(Long id) {
-        Book book = bookRepository.getOne(id);
-        return toDto(book);
+    protected boolean canRead(Book book) {
+        return true;
     }
 
     @Override
-    public List<BookDto> list() {
-        return bookRepository.findAll().stream().map(BookServiceImpl::toDto).collect(Collectors.toList());
+    protected boolean canUpdate(Book book) {
+        return true;
+    }
+
+    @Override
+    protected boolean canDelete(Book book) {
+        return true;
+    }
+
+    @Override
+    protected Book mergeFromDto(BookDto bookDto, Book book) {
+        book.setName(bookDto.getName());
+
+        return book;
     }
 
 }
