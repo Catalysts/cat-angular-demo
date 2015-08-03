@@ -44,9 +44,9 @@ public abstract class AbstractCrudlService<
 
         final Class<?>[] localParameters = GenericTypeResolver.resolveTypeArguments(
                 getClass(), AbstractCrudlService.class);
-        entityType = (Class<ENTITY>) localParameters[0];
-        listType = (Class<LIST_DTO>) localParameters[1];
-        detailType = (Class<DETAIL_DTO>) localParameters[2];
+        entityType = (Class<ENTITY>) localParameters[1];
+        listType = (Class<LIST_DTO>) localParameters[2];
+        detailType = (Class<DETAIL_DTO>) localParameters[3];
     }
 
     @Override

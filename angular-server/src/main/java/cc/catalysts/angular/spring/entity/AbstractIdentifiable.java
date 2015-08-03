@@ -2,6 +2,7 @@ package cc.catalysts.angular.spring.entity;
 
 import cc.catalysts.angular.spring.core.Identifiable;
 
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
@@ -15,6 +16,7 @@ public abstract class AbstractIdentifiable<ID extends Serializable> implements I
     private ID id;
 
     @Id
+    @GeneratedValue
     @Override
     public ID getId() {
         return id;

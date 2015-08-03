@@ -19,4 +19,5 @@ public class CatAngularDemoApplication extends WebMvcAutoConfiguration.WebMvcAut
     public static void main(String[] args) {
         SpringApplication.run(CatAngularDemoApplication.class, args);
     }
+
 }

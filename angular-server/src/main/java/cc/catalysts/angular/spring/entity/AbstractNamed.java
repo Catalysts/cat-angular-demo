@@ -18,20 +18,7 @@ public abstract class AbstractNamed<ID extends Serializable>
         extends AbstractIdentifiable<ID>
         implements Named<ID> {
 
-    private ID id;
     private String name;
-
-    @Id
-    @GeneratedValue
-    @Override
-    public ID getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(ID id) {
-        this.id = id;
-    }
 
     @Basic
     @NotNull

@@ -15,7 +15,7 @@ public class NamedDto<ID extends Serializable> implements Named<ID> {
     private ID id;
     private String name;
 
-    NamedDto() {
+    public NamedDto() {
     }
 
     @Override

@@ -4,9 +4,16 @@ import cc.catalysts.angular.demo.dto.ManufacturerDto;
 import cc.catalysts.angular.demo.entity.Manufacturer;
 import cc.catalysts.angular.demo.repository.ManufacturerRepository;
 import cc.catalysts.angular.demo.service.ManufacturerService;
+import cc.catalysts.angular.spring.core.SearchRequest;
+import cc.catalysts.angular.spring.service.AbstractCrudlService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionService;
+import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -14,20 +21,31 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional(rollbackFor = Throwable.class)
-public class ManufacturerServiceImpl implements ManufacturerService{
-    private ManufacturerRepository manufacturerRepository;
-
+public class ManufacturerServiceImpl extends AbstractCrudlService<Long, Manufacturer, ManufacturerDto, ManufacturerDto, SearchRequest> implements ManufacturerService{
     @Autowired
-    public ManufacturerServiceImpl(ManufacturerRepository manufacturerRepository) {
-        this.manufacturerRepository = manufacturerRepository;
+    public ManufacturerServiceImpl(ManufacturerRepository manufacturerRepository, ConversionService conversionService) {
+        super(manufacturerRepository, conversionService);
     }
 
+    @Override
+    protected boolean canRead(Manufacturer manufacturer) {
+        return true;
+    }
 
     @Override
-    @Transactional(readOnly = true)
-    public ManufacturerDto get(Long id) {
-        Manufacturer manufacturer = manufacturerRepository.getOne(id);
+    protected boolean canUpdate(Manufacturer manufacturer) {
+        return true;
+    }
 
-        return new ManufacturerDto();
+    @Override
+    protected boolean canDelete(Manufacturer manufacturer) {
+        return true;
+    }
+
+    @Override
+    protected Manufacturer mergeFromDto(ManufacturerDto manufacturerDto, Manufacturer manufacturer) {
+        manufacturer.setName(manufacturerDto.getName());
+
+        return manufacturer;
     }
 }
