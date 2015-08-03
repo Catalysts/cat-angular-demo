@@ -8,7 +8,8 @@ angular.module('demo', ['cat', 'cat.template'])
 
         catViewServiceProvider.listAndDetailView('', 'Book', {});
         catViewServiceProvider.listAndDetailView('', 'Manufacturer');
+        catViewServiceProvider.listAndDetailView('', 'CarModel');
     })
     .run(function () {
-        console.log('i am angular');
+        //console.log('i am angular');
     });

@@ -1,0 +1,12 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th cat-sortable="name">Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="data in listData.collection">
+        <td><a ui-sref="CarModel.detail({id: data.id})">{{::data.name}}</a></td>
+    </tr>
+    </tbody>
+</table>
