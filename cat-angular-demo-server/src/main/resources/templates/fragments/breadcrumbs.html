@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org/extras/dialect">
+<body>
+<th:block layout:fragment="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="#" cat-i18n="cc.catalysts.cat-breadcrubms.entry.home">Home</a></li>
+            <li ng-class="{'active':$last}" ng-repeat="bc in breadcrumbs.get()">
+                <a ng-if="!$last" ng-href="{{bc.url}}" cat-i18n="{{bc.key}}">{{bc.title}}</a>
+                <span ng-if="$last" cat-i18n="{{bc.key}}">{{bc.title}}</span>
+            </li>
+        </ol>
+    </div>
+</th:block>
+</body>
+</html>

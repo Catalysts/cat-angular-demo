@@ -1,5 +1,5 @@
 angular.module('demo', ['cat', 'cat.template'])
-    .config(function(catViewServiceProvider) {
+    .config(['catViewServiceProvider', function(catViewServiceProvider) {
         window.cat.util.defaultModelResolver = function() {
             return function(data) {
                 _.extend(this, data);
@@ -9,12 +9,13 @@ angular.module('demo', ['cat', 'cat.template'])
         catViewServiceProvider.listAndDetailView('', 'Book', {});
         catViewServiceProvider.listAndDetailView('', 'Manufacturer');
         catViewServiceProvider.listAndDetailView('', 'CarModel');
-    })
-    .config(function(catSelectConfigServiceProvider) {
+    }])
+    .config(['catSelectConfigServiceProvider', function(catSelectConfigServiceProvider) {
         catSelectConfigServiceProvider.config('manufacturer', {
             endpoint: 'manufacturer'
         });
-    })
-    .run(function () {
-        //console.log('i am angular');
-    });
+    }])
+    .run(['$rootScope', '$globalMessages', 'catBreadcrumbsService', function ($rootScope, $globalMessages, catBreadcrumbsService) {
+        $rootScope.messages = $globalMessages;
+        $rootScope.breadcrumbs = catBreadcrumbsService;
+    }]);

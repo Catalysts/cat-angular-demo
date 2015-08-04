@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org/extras/dialect">
+<body>
+<th:block layout:fragment="messages">
+    <div class="container global-messages" ng-cloak="">
+        <div class="alert alert-success" ng-if="messages.hasMessages('success')">
+            <ul>
+                <li ng-repeat="message in messages.getMessages('success')">{{message}}</li>
+            </ul>
+        </div>
+        <div class="alert alert-danger" ng-if="messages.hasMessages('error')">
+            <ul>
+                <li ng-repeat="message in messages.getMessages('error')">{{message}}</li>
+            </ul>
+        </div>
+        <div class="alert alert-info" ng-if="messages.hasMessages('info')">
+            <ul>
+                <li ng-repeat="message in messages.getMessages('info')">{{message}}</li>
+            </ul>
+        </div>
+        <div class="alert alert-warning" ng-if="messages.hasMessages('warning')">
+            <ul>
+                <li ng-repeat="message in messages.getMessages('warning')">{{message}}</li>
+            </ul>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>
