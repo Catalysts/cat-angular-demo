@@ -77,14 +77,18 @@ public abstract class AbstractCrudlService<
     }
 
     protected PageDto<LIST_DTO> doList(final SEARCH_REQUEST searchRequest) {
-        final Page<ENTITY> page = jpaRepository.findAll(SearchUtils
-                .toPageRequest(searchRequest));
+        final Page<ENTITY> page = executeFindAll(searchRequest);
 
         final List<LIST_DTO> resultList = page.getContent().stream()
                 .map(this::convertForList)
                 .collect(Collectors.toList());
 
         return new PageDto<>(resultList, page.getTotalElements());
+    }
+
+    protected Page<ENTITY> executeFindAll(final SEARCH_REQUEST searchRequest) {
+        return jpaRepository.findAll(SearchUtils
+                .toPageRequest(searchRequest));
     }
 
     protected abstract boolean canRead(ENTITY entity);

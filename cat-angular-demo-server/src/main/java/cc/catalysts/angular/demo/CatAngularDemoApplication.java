@@ -32,6 +32,15 @@ public class CatAngularDemoApplication extends WebMvcAutoConfiguration.WebMvcAut
         }
 
         manufacturerService.create(new ManufacturerDto("VW"));
+        manufacturerService.create(new ManufacturerDto("Audi"));
+        manufacturerService.create(new ManufacturerDto("Bmw"));
+        manufacturerService.create(new ManufacturerDto("Seat"));
+        manufacturerService.create(new ManufacturerDto("Opel"));
+        manufacturerService.create(new ManufacturerDto("Skoda"));
+        manufacturerService.create(new ManufacturerDto("Tesla"));
+        manufacturerService.create(new ManufacturerDto("Mercedes-Benz"));
+        manufacturerService.create(new ManufacturerDto("Mazda"));
+
         return true;
     }
 }

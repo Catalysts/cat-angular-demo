@@ -10,6 +10,11 @@ angular.module('demo', ['cat', 'cat.template'])
         catViewServiceProvider.listAndDetailView('', 'Manufacturer');
         catViewServiceProvider.listAndDetailView('', 'CarModel');
     })
+    .config(function(catSelectConfigServiceProvider) {
+        catSelectConfigServiceProvider.config('manufacturer', {
+            endpoint: 'manufacturer'
+        });
+    })
     .run(function () {
         //console.log('i am angular');
     });

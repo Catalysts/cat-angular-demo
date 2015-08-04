@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,7 +26,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/manufacturers")
-public class ManufacturerController extends AbstractCrudlRestApi<ManufacturerDto, ManufacturerDto, SearchRequest> {
+public class ManufacturerController extends AbstractCrudlRestApi<ManufacturerDto, ManufacturerDto, ManufacturerSearchRequest> {
 
 
     private final ManufacturerService manufacturerService;
@@ -36,7 +37,7 @@ public class ManufacturerController extends AbstractCrudlRestApi<ManufacturerDto
     }
 
     @Override
-    public ManufacturerDto create(@RequestBody ManufacturerDto dto) {
+    public ManufacturerDto create(@RequestBody @Valid ManufacturerDto dto) {
         return manufacturerService.create(dto);
     }
 
@@ -50,7 +51,7 @@ public class ManufacturerController extends AbstractCrudlRestApi<ManufacturerDto
     }
 
     @Override
-    public PageDto<ManufacturerDto> list(SearchRequest searchRequest) {
+    public PageDto<ManufacturerDto> list(ManufacturerSearchRequest searchRequest) {
         return manufacturerService.list(searchRequest);
     }
 

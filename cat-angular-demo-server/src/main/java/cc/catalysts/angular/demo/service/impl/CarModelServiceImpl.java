@@ -2,7 +2,9 @@ package cc.catalysts.angular.demo.service.impl;
 
 import cc.catalysts.angular.demo.dto.CarModelDto;
 import cc.catalysts.angular.demo.entity.CarModel;
+import cc.catalysts.angular.demo.entity.Manufacturer;
 import cc.catalysts.angular.demo.repository.CarModelRepository;
+import cc.catalysts.angular.demo.repository.ManufacturerRepository;
 import cc.catalysts.angular.demo.service.CarModelService;
 import cc.catalysts.angular.spring.core.SearchRequest;
 import cc.catalysts.angular.spring.service.AbstractCrudlService;
@@ -15,9 +17,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional(rollbackFor = Throwable.class)
 public class CarModelServiceImpl extends AbstractCrudlService<Long, CarModel, CarModelDto, CarModelDto, SearchRequest> implements CarModelService{
+    private final ManufacturerRepository manufacturerRepository;
+
     @Autowired
-    public CarModelServiceImpl(CarModelRepository carModelRepository, ConversionService conversionService) {
+    public CarModelServiceImpl(CarModelRepository carModelRepository, ManufacturerRepository manufacturerRepository, ConversionService conversionService) {
         super(carModelRepository, conversionService);
+        this.manufacturerRepository = manufacturerRepository;
     }
 
     @Override
@@ -38,6 +43,9 @@ public class CarModelServiceImpl extends AbstractCrudlService<Long, CarModel, Ca
     @Override
     protected CarModel mergeFromDto(CarModelDto carModelDto, CarModel carModel) {
         carModel.setName(carModelDto.getName());
+
+        Manufacturer manufacturer = manufacturerRepository.findOne(carModelDto.getManufacturer().getId());
+        carModel.setManufacturer(manufacturer);
 
         return carModel;
     }
