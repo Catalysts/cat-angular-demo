@@ -1,7 +1,17 @@
 angular.module('demo', ['cat', 'cat.template'])
-    .config(['catViewServiceProvider', function(catViewServiceProvider) {
-        window.cat.util.defaultModelResolver = function() {
-            return function(data) {
+    .config(['$stateProvider', function ($stateProvider) {
+        $stateProvider.state('index', {
+            url: '/index',
+            template: '<h1>HOME</h1>'
+        });
+    }])
+    .config(['$urlRouterProvider', function ($urlRouterProvider) {
+        $urlRouterProvider.when('', '/index');
+        $urlRouterProvider.otherwise('/index');
+    }])
+    .config(['catViewServiceProvider', function (catViewServiceProvider) {
+        window.cat.util.defaultModelResolver = function () {
+            return function (data) {
                 _.extend(this, data);
             };
         };
@@ -10,7 +20,7 @@ angular.module('demo', ['cat', 'cat.template'])
         catViewServiceProvider.listAndDetailView('', 'Manufacturer');
         catViewServiceProvider.listAndDetailView('', 'CarModel');
     }])
-    .config(['catSelectConfigServiceProvider', function(catSelectConfigServiceProvider) {
+    .config(['catSelectConfigServiceProvider', function (catSelectConfigServiceProvider) {
         catSelectConfigServiceProvider.config('manufacturer', {
             endpoint: 'manufacturer'
         });
