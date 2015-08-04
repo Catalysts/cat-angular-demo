@@ -16,7 +16,7 @@ gulp.task('browser-sync', function () {
             middleware: function (req, res, next) {
                 if (req.url.match(/^\/webjars/i)) {
                     proxyFunction(req, res, next);
-                } else if (req.url.match(/(css|js|html)$/i)) {
+                } else if (req.url.match(/(css|js|html|map)$/i)) {
                     next();
                 } else {
                     proxyFunction(req, res, next);
