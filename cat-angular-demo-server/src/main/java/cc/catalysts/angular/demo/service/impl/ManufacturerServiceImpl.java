@@ -55,6 +55,8 @@ public class ManufacturerServiceImpl extends AbstractCrudlService<Long, Manufact
     @Override
     protected Manufacturer mergeFromDto(ManufacturerDto manufacturerDto, Manufacturer manufacturer) {
         manufacturer.setName(manufacturerDto.getName());
+        manufacturer.setFoundingDate(manufacturerDto.getFoundingDate());
+        manufacturer.setCountryCode(manufacturerDto.getCountryCode());
 
         return manufacturer;
     }

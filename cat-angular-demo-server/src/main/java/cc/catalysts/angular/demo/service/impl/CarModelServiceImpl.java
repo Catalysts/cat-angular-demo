@@ -49,4 +49,6 @@ public class CarModelServiceImpl extends AbstractCrudlService<Long, CarModel, Ca
 
         return carModel;
     }
+
+
 }

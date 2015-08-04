@@ -16,6 +16,8 @@ public class ManufacturEntityConverter implements Converter<Manufacturer, Manufa
 
         manufacturerDto.setId(manufacturer.getId());
         manufacturerDto.setName(manufacturer.getName());
+        manufacturerDto.setCountryCode(manufacturer.getCountryCode());
+        manufacturerDto.setFoundingDate(manufacturer.getFoundingDate());
 
         return manufacturerDto;
     }

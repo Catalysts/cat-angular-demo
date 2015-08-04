@@ -14,6 +14,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import java.time.LocalDate;
+
 @EnableWebMvc
 @Configuration
 @EnableAutoConfiguration
@@ -26,20 +28,22 @@ public class CatAngularDemoApplication extends WebMvcAutoConfiguration.WebMvcAut
     }
 
     @Bean
-    public boolean databseInit(ManufacturerService manufacturerService, ManufacturerRepository manufacturerRepository) {
+    public boolean databaseInit(ManufacturerService manufacturerService, ManufacturerRepository manufacturerRepository) {
         if (manufacturerRepository.count() > 0) {
             return true;
         }
 
-        manufacturerService.create(new ManufacturerDto("VW"));
-        manufacturerService.create(new ManufacturerDto("Audi"));
-        manufacturerService.create(new ManufacturerDto("Bmw"));
-        manufacturerService.create(new ManufacturerDto("Seat"));
-        manufacturerService.create(new ManufacturerDto("Opel"));
-        manufacturerService.create(new ManufacturerDto("Skoda"));
-        manufacturerService.create(new ManufacturerDto("Tesla"));
-        manufacturerService.create(new ManufacturerDto("Mercedes-Benz"));
-        manufacturerService.create(new ManufacturerDto("Mazda"));
+        LocalDate foundingDate = LocalDate.now();
+
+        manufacturerService.create(new ManufacturerDto("VW", foundingDate, "GER"));
+        manufacturerService.create(new ManufacturerDto("Audi",foundingDate.minusYears(1),"GER"));
+        manufacturerService.create(new ManufacturerDto("Bmw",foundingDate.minusYears(2),"GER"));
+        manufacturerService.create(new ManufacturerDto("Seat",foundingDate.minusYears(3),"ESP"));
+        manufacturerService.create(new ManufacturerDto("Opel",foundingDate.minusYears(4),"GER"));
+        manufacturerService.create(new ManufacturerDto("Skoda",foundingDate.minusYears(5),"CZE"));
+        manufacturerService.create(new ManufacturerDto("Tesla",foundingDate.minusYears(6),"USA"));
+        manufacturerService.create(new ManufacturerDto("Mercedes-Benz",foundingDate.minusYears(7),"GER"));
+        manufacturerService.create(new ManufacturerDto("Mazda",foundingDate.minusYears(8),"JPN"));
 
         return true;
     }

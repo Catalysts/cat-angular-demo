@@ -2,11 +2,18 @@
     <thead>
     <tr>
         <th cat-sortable="name">Name</th>
+        <th cat-sortable="foundingDate">Founding Date</th>
+        <th cat-sortable="countryCode">Country</th>
     </tr>
     </thead>
     <tbody>
     <tr ng-repeat="data in listData.collection">
-        <td><a ui-sref="Manufacturer.detail({id: data.id})">{{::data.name}}</a></td>
+        <td>
+            <a ui-sref="Manufacturer.detail({id: data.id})">{{::data.name}}</a>
+        </td>
+        <td> <a> {{::data.foundingDate.dayOfMonth}}.{{::data.foundingDate.month.toLowerCase()}}.{{::data.foundingDate.year}} </a>  </td>
+
+        <td> <a>{{::data.countryCode}}</a> </td>
     </tr>
     </tbody>
 </table>

@@ -2,6 +2,7 @@ package cc.catalysts.angular.demo.entity;
 
 import cc.catalysts.angular.spring.entity.AbstractNamed;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
@@ -11,7 +12,7 @@ public class CarModel extends AbstractNamed<Long> {
 
     private Manufacturer manufacturer;
 
-    @ManyToOne
+    @ManyToOne()
     @NotNull
     public Manufacturer getManufacturer() {
         return manufacturer;
