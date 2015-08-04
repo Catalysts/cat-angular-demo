@@ -1,0 +1,17 @@
+{
+  "name": "cat-angular-demo-ui",
+  "version": "1.0.0-SNAPSHOT",
+  "description": "cat-angular demo project",
+  "readme": "NPM config fore cat-angular-demo development",
+  "author": [
+    "Thomas Scheinecker, Catalysts GmbH"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.8.2",
+    "gulp": "^3.9.0",
+    "gulp-debug": "^2.0.1",
+    "gulp-util": "^3.0.6",
+    "proxy-middleware": "^0.13.0"
+  }
+}
