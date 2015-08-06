@@ -6,6 +6,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class Manufacturer extends AbstractNamed<Long> {
     private List<CarModel> carModels;
 
     @Basic
+    @NotNull
     @cc.catalysts.angular.demo.validator.Past
     public LocalDate getFoundingDate() {
         return foundingDate;
