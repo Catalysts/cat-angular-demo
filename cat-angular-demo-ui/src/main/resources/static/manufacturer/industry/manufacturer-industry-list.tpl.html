@@ -1,4 +1,4 @@
-<a class="btn btn-primary" ui-sref="Manufacturer.tab.CarModel.detail({id: 'new', manufacturerId: manufacturerId})">New</a>
+<a class="btn btn-primary" ui-sref="Manufacturer.tab.Industry.detail({id: 'new', manufacturerId: manufacturerId})">New</a>
 
 <cat-paginated ng-if="listData">
     <table class="table">
@@ -9,7 +9,7 @@
         </thead>
         <tbody>
         <tr ng-repeat="data in listData.collection">
-            <td><a ui-sref="Manufacturer.tab.CarModel.detail({id: data.id, manufacturerId: data.manufacturer.id})">{{::data.name}}</a></td>
+            <td><a ui-sref="Manufacturer.tab.Industry.detail({id: data.id, manufacturerId: data.manufacturer.id})">{{::data.name}}</a></td>
         </tr>
         </tbody>
     </table>

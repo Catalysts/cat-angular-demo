@@ -1,5 +1,7 @@
-angular.module('cat.demo.manufacturer.ManufacturerDetailsController', ['cat.angular.demo.manufacturer.carmodel.ManufacturerCarmodelController',
-'cat.angular.demo.manufacturer.industry.ManufacturerIndustryController'])
+angular.module('cat.demo.manufacturer.ManufacturerDetailsController', [
+    'cat.angular.demo.manufacturer.carmodel.ManufacturerCarmodelController',
+    'cat.angular.demo.manufacturer.industry.ManufacturerIndustryController'
+])
 .controller('ManufacturerDetailsController', function($scope){
         $scope.foundingDateModel = function(value) {
             if (angular.isDefined(value)) {

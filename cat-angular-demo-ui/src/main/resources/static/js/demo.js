@@ -24,6 +24,16 @@ angular.module('demo', ['cat', 'cat.template',
                     }
                 };
             }
+            else if (name === 'ManufacturerIndustry') {
+                return function ManufacturerIndustry (data) {
+                    var that = this;
+                    _.extend(this, data);
+
+                    this.setParent = function(parent) {
+                        that.manufacturer = parent;
+                    }
+                };
+            }
 
             return function (data) {
                 _.extend(this, data);
