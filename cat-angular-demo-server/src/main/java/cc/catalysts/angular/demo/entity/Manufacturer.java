@@ -21,6 +21,7 @@ public class Manufacturer extends AbstractNamed<Long> {
     private List<CarModel> carModels;
 
     @Basic
+    @cc.catalysts.angular.demo.validator.Past
     public LocalDate getFoundingDate() {
         return foundingDate;
     }
