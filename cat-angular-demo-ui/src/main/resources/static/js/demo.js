@@ -1,4 +1,7 @@
-angular.module('demo', ['cat', 'cat.template'])
+angular.module('demo', ['cat', 'cat.template',
+    'cat.angular.demo.manufacturer.carmodel.ManufacturerCarmodel',
+    'cat.angular.demo.manufacturer.industry.ManufacturerIndustry',
+     'cat.demo.manufacturer.ManufacturerDetailsController'])
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider.state('index', {
             url: '/index',
@@ -10,15 +13,57 @@ angular.module('demo', ['cat', 'cat.template'])
         $urlRouterProvider.otherwise('/index');
     }])
     .config(['catViewServiceProvider', function (catViewServiceProvider) {
-        window.cat.util.defaultModelResolver = function () {
+        window.cat.util.defaultModelResolver = function (name) {
+            if (name === 'ManufacturerCarModel') {
+                return function ManufacturerCarModel (data) {
+                    var that = this;
+                    _.extend(this, data);
+
+                    this.setParent = function(parent) {
+                        that.manufacturer = parent;
+                    }
+                };
+            }
+
             return function (data) {
                 _.extend(this, data);
             };
         };
 
         catViewServiceProvider.listAndDetailView('', 'Book', {});
-        catViewServiceProvider.listAndDetailView('', 'Manufacturer');
+        //catViewServiceProvider.builder()
+        //    .name('Manufacturer')
+        //    .child('CarModel')
+        //    .icon('map-marker')
+        //    .parent()
+        //    .build();
+
+        catViewServiceProvider.listAndDetailView('', 'Manufacturer', {
+            endpoint: {
+                children: {
+                    carmodel: {
+                        url: 'carmodels'
+                    },
+                    industry:{
+                        url: 'industries'
+                    }
+                }
+            },
+            details: {
+                additionalViewTemplate: 'tabs',
+                additionalViewTemplateTabs: [
+                    {
+                        name: 'carmodel',
+                        icon: 'map-marker'
+                    },{
+                        name: 'industry',
+                        icon: 'map-marker'
+                    }
+                ]
+            }
+        });
         catViewServiceProvider.listAndDetailView('', 'CarModel');
+        catViewServiceProvider.listAndDetailView('','Industry');
     }])
     .config(['catSelectConfigServiceProvider', function (catSelectConfigServiceProvider) {
         catSelectConfigServiceProvider.config('manufacturer', {

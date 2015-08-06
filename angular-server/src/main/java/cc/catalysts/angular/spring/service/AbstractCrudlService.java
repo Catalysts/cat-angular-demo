@@ -79,11 +79,15 @@ public abstract class AbstractCrudlService<
     protected PageDto<LIST_DTO> doList(final SEARCH_REQUEST searchRequest) {
         final Page<ENTITY> page = executeFindAll(searchRequest);
 
-        final List<LIST_DTO> resultList = page.getContent().stream()
+        return convertList(page);
+    }
+
+    protected PageDto<LIST_DTO> convertList(Page<ENTITY> entities) {
+        final List<LIST_DTO> resultList = entities.getContent().stream()
                 .map(this::convertForList)
                 .collect(Collectors.toList());
 
-        return new PageDto<>(resultList, page.getTotalElements());
+        return new PageDto<>(resultList, entities.getTotalElements());
     }
 
     protected Page<ENTITY> executeFindAll(final SEARCH_REQUEST searchRequest) {

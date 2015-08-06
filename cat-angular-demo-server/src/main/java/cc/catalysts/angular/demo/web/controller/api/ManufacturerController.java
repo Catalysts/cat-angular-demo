@@ -60,11 +60,13 @@ public class ManufacturerController extends AbstractCrudlRestApi<ManufacturerDto
         return manufacturerService.update(id, dto);
     }
 
-    // TODO - delete?
-
     @Override
     public NamedDto<Long> info(@PathVariable("id") Long id) {
-        throw new NotImplementedException();
+        NamedDto<Long> namedDto = new NamedDto<>();
+        ManufacturerDto manufacturerDto = manufacturerService.get(id);
+        namedDto.setId(manufacturerDto.getId());
+        namedDto.setName(manufacturerDto.getName());
+        return namedDto;
     }
 
     @Override

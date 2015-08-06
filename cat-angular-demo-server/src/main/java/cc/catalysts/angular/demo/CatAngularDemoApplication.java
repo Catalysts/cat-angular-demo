@@ -4,7 +4,9 @@ import cc.catalysts.angular.demo.dto.ManufacturerDto;
 import cc.catalysts.angular.demo.repository.ManufacturerRepository;
 import cc.catalysts.angular.demo.service.ManufacturerService;
 import cc.catalysts.angular.spring.CatAngularModule;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JSR310Module;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
@@ -46,5 +48,13 @@ public class CatAngularDemoApplication extends WebMvcAutoConfiguration.WebMvcAut
         manufacturerService.create(new ManufacturerDto("Mazda",foundingDate.minusYears(8),"JPN"));
 
         return true;
+    }
+
+    @Bean
+    ObjectMapper objectMapper() {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JSR310Module());
+        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        return mapper;
     }
 }

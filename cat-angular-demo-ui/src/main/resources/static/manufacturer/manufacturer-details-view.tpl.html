@@ -1,3 +1,9 @@
 <div class="form-horizontal">
-    <pre>{{detail  | json}}</pre>
+    <ul>
+        <li> Name: {{detail.name}}</li>
+        <li> Founding Date: {{detail.foundingDate | date:'dd.MM.yyyy'}}
+        {{detail.foundingDate.year}}
+        </li>
+        <li> Country of production: {{detail.countryCode}} </li>
+    </ul>
 </div>
