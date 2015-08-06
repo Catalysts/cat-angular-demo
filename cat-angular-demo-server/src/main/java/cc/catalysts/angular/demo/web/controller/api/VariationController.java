@@ -52,6 +52,7 @@ public class VariationController extends AbstractCrudlRestApi<VariationDto, Vari
         return null;
     }
 
+    // TODO: PathVariable! filter for CarModel, see CarModelController
     @Override
     public PageDto<VariationDto> list(SearchRequest searchRequest) {
         return variationService.list(searchRequest);

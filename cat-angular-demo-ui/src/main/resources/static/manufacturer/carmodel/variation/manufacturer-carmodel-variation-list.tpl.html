@@ -9,7 +9,7 @@
         </thead>
         <tbody>
         <tr ng-repeat="data in listData.collection">
-            <td><a ui-sref="Manufacturer.tab.CarModel.Variation.detail({id: data.id, carmodelId: data.carmodelId.id})">{{::data.name}}</a></td>
+            <td><a ui-sref="Manufacturer.tab.CarModel.tab.Variation.detail({id: data.id, carmodelId: data.carModel.id})">{{::data.name}}</a></td>
         </tr>
         </tbody>
     </table>
