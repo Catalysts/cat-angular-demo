@@ -3,6 +3,7 @@ package cc.catalysts.angular.demo.web.controller.api;
 import cc.catalysts.angular.demo.dto.CarModelDto;
 import cc.catalysts.angular.demo.service.CarModelService;
 import cc.catalysts.angular.spring.core.SearchRequest;
+import cc.catalysts.angular.spring.dto.NamedDto;
 import cc.catalysts.angular.spring.dto.PageDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -34,11 +35,12 @@ public class CarModelController {
         return carModelService.get(id);
     }
 
-
+    // TODO: should override abstract method?
     @RequestMapping(value = "", method = RequestMethod.GET)
     public PageDto<CarModelDto> list(@PathVariable("manufacturerId") Long manufacturerId, SearchRequest searchRequest) {
         return carModelService.findAllByManufaturerId(manufacturerId, searchRequest);
     }
+
 //
 //    @Override
 //    public CarModelDto update(@PathVariable("id") Long id, @RequestBody CarModelDto dto) {
@@ -62,4 +64,12 @@ public class CarModelController {
 //        throw new NotImplementedException();
 //    }
 
+    @RequestMapping(value = "/{id}", params = {"info"}, method = RequestMethod.GET)
+    public NamedDto<Long> info(@PathVariable("id") Long id) {
+        NamedDto<Long> namedDto = new NamedDto<>();
+        CarModelDto carModelDto = carModelService.get(id);
+        namedDto.setId(carModelDto.getId());
+        namedDto.setName(carModelDto.getName());
+        return namedDto;
+    }
 }

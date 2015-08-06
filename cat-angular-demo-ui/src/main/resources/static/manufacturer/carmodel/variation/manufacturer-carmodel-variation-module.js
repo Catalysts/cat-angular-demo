@@ -5,10 +5,10 @@ angular.module('cat.angular.demo.manufacturer.carmodel.variation.ManufacturerCar
     .config(function (catRouteServiceProvider) {
         catRouteServiceProvider
             .detailRoute('', 'Variation', {
-                parent: 'CarModel.tab',
-                name: 'CarModelVariation',
+                parent: 'Manufacturer.tab.CarModel.tab',
+                name: 'ManufacturerCarModelVariation',
                 endpoint: {
-                    parents: ['carModel'],
+                    parents: ['manufacturer', 'carmodel'],
                     name: 'variation'
                 }
             });

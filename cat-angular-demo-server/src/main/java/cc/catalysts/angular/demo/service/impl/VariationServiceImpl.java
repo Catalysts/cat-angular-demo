@@ -51,7 +51,7 @@ public class VariationServiceImpl extends AbstractCrudlService<Long, Variation, 
     protected Variation mergeFromDto(VariationDto variationDto, Variation variation) {
         variation.setName(variationDto.getName());
 
-        CarModel carModel = carModelRepository.findOne(variationDto.getCarmodel().getId());
+        CarModel carModel = carModelRepository.findOne(variationDto.getCarModel().getId());
         variation.setCarModel(carModel);
 
         return variation;

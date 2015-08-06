@@ -25,7 +25,7 @@ public class VariationEntityConverter implements Converter<Variation, VariationD
 
         variationDto.setId(variation.getId());
         variationDto.setName(variation.getName());
-        variationDto.setCarmodel(carModelEntityConverter.convert(variation.getCarModel()));
+        variationDto.setCarModel(carModelEntityConverter.convert(variation.getCarModel()));
 
         return variationDto;
     }

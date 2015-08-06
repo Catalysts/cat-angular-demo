@@ -35,6 +35,16 @@ angular.module('demo', ['cat', 'cat.template',
                     }
                 };
             }
+            else if (name === 'ManufacturerCarModelVariation') {
+                return function ManufacturerCarModelVariation(data) {
+                    var that = this;
+                    _.extend(this, data);
+
+                    this.setParent = function (parent) {
+                        that.carModel = parent;
+                    }
+                };
+            }
 
             return function (data) {
                 _.extend(this, data);
@@ -54,7 +64,7 @@ angular.module('demo', ['cat', 'cat.template',
                 children: {
                     carmodel: {
                         url: 'carmodels',
-                        children : {
+                        children: {
                             variation: {
                                 url: 'variations'
                             }
@@ -70,34 +80,16 @@ angular.module('demo', ['cat', 'cat.template',
                 additionalViewTemplateTabs: [
                     {
                         name: 'carmodel',
-                        icon: 'map-marker'
+                        icon: 'road'
                     }, {
                         name: 'industry',
-                        icon: 'map-marker'
+                        icon: 'globe'
                     }
                 ]
             }
         });
 
-        catViewServiceProvider.listAndDetailView('', 'CarModel'); /*{
-
-            endpoint: {
-                children: {
-                    variation: {
-                        url: 'variations'
-                    }
-                }
-            },
-            details: {
-                additionalViewTemplate: 'tabs',
-                additionalViewTemplateTabs: [
-                    {
-                        name: 'variation',
-                        icon: 'map-marker'
-                    }
-                ]
-            }
-        }); */
+        catViewServiceProvider.listAndDetailView('', 'CarModel');
         catViewServiceProvider.listAndDetailView('', 'Industry');
         catViewServiceProvider.listAndDetailView('', 'Variation');
     }])

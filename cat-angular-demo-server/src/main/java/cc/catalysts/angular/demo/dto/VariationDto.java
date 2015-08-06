@@ -13,11 +13,11 @@ public class VariationDto extends NamedDto<Long> {
     private NamedDto<Long> carModel;
 
     @NotNull
-    public NamedDto<Long> getCarmodel() {
+    public NamedDto<Long> getCarModel() {
         return carModel;
     }
 
-    public void setCarmodel(NamedDto<Long> carModel) {
+    public void setCarModel(NamedDto<Long> carModel) {
         this.carModel = carModel;
     }
 }
