@@ -1,7 +1,8 @@
 angular.module('demo', ['cat', 'cat.template',
     'cat.angular.demo.manufacturer.carmodel.ManufacturerCarmodel',
     'cat.angular.demo.manufacturer.industry.ManufacturerIndustry',
-     'cat.demo.manufacturer.ManufacturerDetailsController'])
+    'cat.angular.demo.manufacturer.carmodel.variation.ManufacturerCarmodelVariation',
+    'cat.demo.manufacturer.ManufacturerDetailsController'])
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider.state('index', {
             url: '/index',
@@ -15,21 +16,21 @@ angular.module('demo', ['cat', 'cat.template',
     .config(['catViewServiceProvider', function (catViewServiceProvider) {
         window.cat.util.defaultModelResolver = function (name) {
             if (name === 'ManufacturerCarModel') {
-                return function ManufacturerCarModel (data) {
+                return function ManufacturerCarModel(data) {
                     var that = this;
                     _.extend(this, data);
 
-                    this.setParent = function(parent) {
+                    this.setParent = function (parent) {
                         that.manufacturer = parent;
                     }
                 };
             }
             else if (name === 'ManufacturerIndustry') {
-                return function ManufacturerIndustry (data) {
+                return function ManufacturerIndustry(data) {
                     var that = this;
                     _.extend(this, data);
 
-                    this.setParent = function(parent) {
+                    this.setParent = function (parent) {
                         that.manufacturer = parent;
                     }
                 };
@@ -52,9 +53,14 @@ angular.module('demo', ['cat', 'cat.template',
             endpoint: {
                 children: {
                     carmodel: {
-                        url: 'carmodels'
+                        url: 'carmodels',
+                        children : {
+                            variation: {
+                                url: 'variations'
+                            }
+                        }
                     },
-                    industry:{
+                    industry: {
                         url: 'industries'
                     }
                 }
@@ -65,15 +71,35 @@ angular.module('demo', ['cat', 'cat.template',
                     {
                         name: 'carmodel',
                         icon: 'map-marker'
-                    },{
+                    }, {
                         name: 'industry',
                         icon: 'map-marker'
                     }
                 ]
             }
         });
-        catViewServiceProvider.listAndDetailView('', 'CarModel');
-        catViewServiceProvider.listAndDetailView('','Industry');
+
+        catViewServiceProvider.listAndDetailView('', 'CarModel'); /*{
+
+            endpoint: {
+                children: {
+                    variation: {
+                        url: 'variations'
+                    }
+                }
+            },
+            details: {
+                additionalViewTemplate: 'tabs',
+                additionalViewTemplateTabs: [
+                    {
+                        name: 'variation',
+                        icon: 'map-marker'
+                    }
+                ]
+            }
+        }); */
+        catViewServiceProvider.listAndDetailView('', 'Industry');
+        catViewServiceProvider.listAndDetailView('', 'Variation');
     }])
     .config(['catSelectConfigServiceProvider', function (catSelectConfigServiceProvider) {
         catSelectConfigServiceProvider.config('manufacturer', {

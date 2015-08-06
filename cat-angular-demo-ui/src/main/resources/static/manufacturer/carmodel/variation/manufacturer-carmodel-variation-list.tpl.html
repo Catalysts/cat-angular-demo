@@ -1,0 +1,16 @@
+<a class="btn btn-primary" ui-sref="Manufacturer.tab.CarModel.Variation.detail({id: 'new', carmodelId: carmodelId})">New</a>
+
+<cat-paginated ng-if="listData">
+    <table class="table">
+        <thead>
+        <tr>
+            <th cat-sortable="name">Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="data in listData.collection">
+            <td><a ui-sref="Manufacturer.tab.CarModel.Variation.detail({id: data.id, carmodelId: data.carmodelId.id})">{{::data.name}}</a></td>
+        </tr>
+        </tbody>
+    </table>
+</cat-paginated>
