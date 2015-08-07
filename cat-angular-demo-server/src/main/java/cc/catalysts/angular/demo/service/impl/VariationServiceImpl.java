@@ -60,7 +60,7 @@ public class VariationServiceImpl extends AbstractCrudlService<Long, Variation, 
 
     @Override
     public PageDto<VariationDto> findAllByCarModelId(Long carModelId, SearchRequest searchRequest) {
-        Page<Variation> allByCarModels = variationRepository.findAllByCarModelId(carModelRepository.getOne(carModelId), SearchUtils.toPageRequest(searchRequest));
+        Page<Variation> allByCarModels = variationRepository.findAllByCarModel(carModelRepository.getOne(carModelId), SearchUtils.toPageRequest(searchRequest));
         return convertList(allByCarModels);
     }
 }

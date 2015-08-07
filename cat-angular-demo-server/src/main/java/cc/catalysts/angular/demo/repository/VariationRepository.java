@@ -14,5 +14,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface VariationRepository extends JpaRepository<Variation, Long> {
 
-    Page<Variation> findAllByCarModelId(CarModel carModel, Pageable pageable);
+    Page<Variation> findAllByCarModel(CarModel carModel, Pageable pageable);
 }

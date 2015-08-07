@@ -7,10 +7,7 @@ import cc.catalysts.angular.spring.core.SearchRequest;
 import cc.catalysts.angular.spring.dto.NamedDto;
 import cc.catalysts.angular.spring.dto.PageDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,7 +16,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/manufacturers/{manufacturerId}/carmodels/{carmodelId}/variations")
-public class VariationController extends AbstractCrudlRestApi<VariationDto, VariationDto, SearchRequest> {
+public class VariationController {
 
     private final VariationService variationService;
 
@@ -28,38 +25,36 @@ public class VariationController extends AbstractCrudlRestApi<VariationDto, Vari
         this.variationService = variationService;
     }
 
-    @Override
+    @RequestMapping(value = "", method = RequestMethod.POST)
     public VariationDto create(@RequestBody VariationDto dto) {
         return variationService.create(dto);
     }
 
-    @Override
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable("id") Long id) {
         variationService.delete(id);
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public VariationDto get(@PathVariable("id") Long id) {
         return variationService.get(id);
     }
 
-    @Override
     public NamedDto<Long> info(Long id) {
         return null;
     }
 
-    @Override
     public List<NamedDto<Long>> infos(Iterable<Long> longs) {
         return null;
     }
 
-    // TODO: PathVariable! filter for CarModel, see CarModelController
-    @Override
-    public PageDto<VariationDto> list(SearchRequest searchRequest) {
-        return variationService.list(searchRequest);
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public PageDto<VariationDto> list(@PathVariable("carmodelId") Long carmodelId, SearchRequest searchRequest) {
+        return variationService.findAllByCarModelId(carmodelId, searchRequest);
     }
 
 
-    @Override
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public VariationDto update(@PathVariable("id") Long id, @RequestBody VariationDto dto) {
         return variationService.update(id, dto);
     }

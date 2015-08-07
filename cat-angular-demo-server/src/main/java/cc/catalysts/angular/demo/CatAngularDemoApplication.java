@@ -35,7 +35,7 @@ public class CatAngularDemoApplication extends WebMvcAutoConfiguration.WebMvcAut
             return true;
         }
 
-        LocalDate foundingDate = LocalDate.now();
+        LocalDate foundingDate = LocalDate.now().minusYears(1);
 
         manufacturerService.create(new ManufacturerDto("VW", foundingDate, "GER"));
         manufacturerService.create(new ManufacturerDto("Audi",foundingDate.minusYears(1),"GER"));
