@@ -39,6 +39,7 @@ public class BookServiceImpl  extends AbstractCrudlService<Long, Book, BookDto, 
     @Override
     protected Book mergeFromDto(BookDto bookDto, Book book) {
         book.setName(bookDto.getName());
+        book.setAuthor(bookDto.getAuthor());
 
         return book;
     }

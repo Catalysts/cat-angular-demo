@@ -2,11 +2,13 @@
     <thead>
     <tr>
         <th cat-sortable="name">Name</th>
+        <th cat-sortable="author">Author</th>
     </tr>
     </thead>
     <tbody>
     <tr ng-repeat="data in listData.collection">
         <td><a ui-sref="Book.detail({id: data.id})">{{::data.name}}</a></td>
+        <td>{{::data.author}}</td>
     </tr>
     </tbody>
 </table>

@@ -7,5 +7,14 @@ import cc.catalysts.angular.spring.dto.NamedDto;
  */
 public class BookDto extends NamedDto<Long> {
 
+    private String author;
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
 }

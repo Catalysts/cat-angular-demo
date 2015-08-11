@@ -16,6 +16,7 @@ public class BookEntityConverter implements Converter<Book, BookDto> {
 
             bookDto.setId(book.getId());
             bookDto.setName(book.getName());
+            bookDto.setAuthor(book.getAuthor());
 
             return bookDto;
         }

@@ -1,3 +1,14 @@
-<div class="form-horizontal">
-    <pre>{{detail  | json}}</pre>
-</div>
+<form class="form-horizontal">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-10">
+            <p class="form-control-static">{{::detail.name}}</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Author</label>
+        <div class="col-sm-10">
+            <p class="form-control-static">{{::detail.author}}</p>
+        </div>
+    </div>
+</form>
