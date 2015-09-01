@@ -55,10 +55,5 @@
             <artifactId>angular-server</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>cc.catalysts</groupId>
-            <artifactId>angular-ui</artifactId>
-            <version>${project.version}</version>
-        </dependency>
     </dependencies>
 </project>
