@@ -2,9 +2,9 @@ package cc.catalysts.angular.demo.service.impl;
 
 import cc.catalysts.angular.demo.dto.IndustryDto;
 import cc.catalysts.angular.demo.entity.Industry;
-import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by Mustafa on 06.08.2015.

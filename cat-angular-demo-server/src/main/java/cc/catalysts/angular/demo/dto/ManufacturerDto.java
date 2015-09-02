@@ -10,30 +10,30 @@ import java.time.LocalDate;
 public class ManufacturerDto extends NamedDto<Long> {
 
     private LocalDate foundingDate;
-    private String countryCode;
+    private CountryDto country;
 
     public ManufacturerDto() {
     }
 
-    public ManufacturerDto(String name,LocalDate foundingDate, String countryCode) {
+    public ManufacturerDto(String name,LocalDate foundingDate, CountryDto countryDto) {
         setName(name);
         setFoundingDate(foundingDate);
-        setCountryCode(countryCode);
+        setCountry(countryDto);
     }
 
     public void setFoundingDate(LocalDate foundingDate){
         this.foundingDate = foundingDate ;
     }
 
-    public String getCountryCode() {
-        return countryCode;
-    }
-
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode;
-    }
-
     public LocalDate getFoundingDate() {
         return foundingDate;
+    }
+
+    public CountryDto getCountry() {
+        return country;
+    }
+
+    public void setCountry(CountryDto country) {
+        this.country = country;
     }
 }

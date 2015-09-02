@@ -11,9 +11,9 @@
         <td>
             <a ui-sref="Manufacturer.detail({id: data.id})">{{::data.name}}</a>
         </td>
-        <td> {{::data.foundingDate | date:'dd.MM.yyyy'}}   </td>
+        <td> {{::data.foundingDate | date:'dd.MM.yyyy'}}</td>
 
-        <td> {{::data.countryCode}}</td>
+        <td> {{::data.country.code}}</td>
     </tr>
     </tbody>
 </table>

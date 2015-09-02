@@ -1,16 +1,11 @@
 package cc.catalysts.angular.demo.web.controller.api;
 
-import cc.catalysts.angular.demo.dto.BookDto;
 import cc.catalysts.angular.demo.dto.ManufacturerDto;
-import cc.catalysts.angular.demo.entity.Manufacturer;
 import cc.catalysts.angular.demo.service.ManufacturerService;
-import cc.catalysts.angular.demo.service.impl.ManufacturerServiceImpl;
 import cc.catalysts.angular.spring.api.AbstractCrudlRestApi;
-import cc.catalysts.angular.spring.core.SearchRequest;
 import cc.catalysts.angular.spring.dto.NamedDto;
 import cc.catalysts.angular.spring.dto.PageDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.validation.Valid;
-import java.util.Arrays;
 import java.util.List;
 
 /**

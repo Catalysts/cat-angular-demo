@@ -1,14 +1,11 @@
 package cc.catalysts.angular.demo.entity;
 
-import cc.catalysts.angular.spring.core.Identifiable;
 import cc.catalysts.angular.spring.core.Named;
 import cc.catalysts.angular.spring.entity.AbstractIdentifiable;
-import cc.catalysts.angular.spring.entity.AbstractNamed;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 /**
  * Created by Mustafa on 03.08.2015.

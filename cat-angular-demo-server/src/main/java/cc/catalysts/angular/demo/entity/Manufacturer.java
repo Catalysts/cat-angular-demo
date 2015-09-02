@@ -2,10 +2,7 @@ package cc.catalysts.angular.demo.entity;
 
 import cc.catalysts.angular.spring.entity.AbstractNamed;
 
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
@@ -17,7 +14,9 @@ import java.util.List;
 public class Manufacturer extends AbstractNamed<Long> {
 
     private LocalDate foundingDate;
-    private String countryCode;
+
+    private Country country;
+
     private List<Person> owners;
     private List<CarModel> carModels;
 
@@ -30,15 +29,6 @@ public class Manufacturer extends AbstractNamed<Long> {
 
     public void setFoundingDate(LocalDate foundingDate) {
         this.foundingDate = foundingDate;
-    }
-
-    @Basic
-    public String getCountryCode() {
-        return countryCode;
-    }
-
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode;
     }
 
     @OneToMany(cascade = CascadeType.DETACH, orphanRemoval = true)
@@ -55,7 +45,18 @@ public class Manufacturer extends AbstractNamed<Long> {
         return carModels;
     }
 
+
     public void setCarModels(List<CarModel> carModels) {
         this.carModels = carModels;
+    }
+
+    @ManyToOne()
+    @NotNull
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 }

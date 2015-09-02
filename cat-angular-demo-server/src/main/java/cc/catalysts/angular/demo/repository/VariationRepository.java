@@ -1,7 +1,6 @@
 package cc.catalysts.angular.demo.repository;
 
 import cc.catalysts.angular.demo.entity.CarModel;
-import cc.catalysts.angular.demo.entity.Industry;
 import cc.catalysts.angular.demo.entity.Variation;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
