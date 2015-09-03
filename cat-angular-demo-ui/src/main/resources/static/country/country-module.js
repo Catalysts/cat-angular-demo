@@ -22,13 +22,26 @@ app.config(function (catViewServiceProvider) {
 
 // The listAndDetailView would work without a specific controller implementation
 // however, as we would like to extend the existing controller we need to create our own.
-// therefore
-app.controller('countryDetailsController', ['$scope', function($scope) {
+//
+// IMPORTANT: The listAndDetailView finds the controllers by their name.
+// - CountryController          -- list entries
+// - CountryDetailsController   -- view/edit single entry
+app.controller('CountryController', ['$scope', 'catListDataLoadingService', function ($scope, catListDataLoadingService) {
 
-    // we won't allow deleting entries
-    // this variable is used in the catElementVisibilityService decorator (below)
-    $scope.allowDelete = false;
-    $scope.detail.allowDelete = false;
+    function reloadList() {
+        catListDataLoadingService.load($scope.listData.endpoint, $scope.listData.searchRequest).then(
+            function (data) {
+                _.assign($scope.listData, data);
+            }
+        );
+    }
+
+    $scope.toggleState = function () {
+        var dataCopy = angular.copy(this.data);
+        dataCopy.disabled = !dataCopy.disabled;
+
+        $scope.listData.endpoint.save(dataCopy).then(reloadList);
+    };
 
 }]);
 
@@ -50,7 +63,7 @@ app.config(['$provide', function ($provide) {
             $delegate.isVisible = function (identifier, data) {
 
                 // Since we registered our model with the defaultModelResolver we can simply check if it is an instanceof
-                if(identifier === 'cat.base.delete' && !!data.detail && data.detail instanceof Country){
+                if (identifier === 'cat.base.delete' && !!data.detail && data.detail instanceof Country) {
                     return false;
                 }
 

@@ -2,13 +2,17 @@
     <thead>
     <tr>
         <th cat-sortable="name">Name</th>
-        <th cat-sortable="author">Disabled</th>
+        <th cat-sortable="disabled">Disabled</th>
     </tr>
     </thead>
     <tbody>
     <tr ng-repeat="data in listData.collection">
         <td><a ui-sref="Country.detail({id: data.id})">{{::data.name}}</a></td>
-        <td>{{::data.disabled}}</td>
+        <td>
+            <a ng-click="toggleState()" href="#">
+                <cat-checkbox checked="data.disabled" ng-click="toggleDisabled"></cat-checkbox>
+            </a>
+        </td>
     </tr>
     </tbody>
 </table>
