@@ -20,8 +20,9 @@ app.config(function (catViewServiceProvider) {
     });
 });
 
-// The listAndDetailView would work without a specific controller implementation
-// however, as we would like to extend the existing controller we need to create our own.
+// The listAndDetailView would work without a specific controller implementation.
+// However, as we would like to extend the existing controller we need to create our own.
+// Besides adding new functionality, we could also extend/change existing functions.
 //
 // IMPORTANT: The listAndDetailView finds the controllers by their name.
 // - CountryController          -- list entries
