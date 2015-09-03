@@ -2,6 +2,7 @@ angular.module('demo', ['cat', 'cat.template',
     'cat.angular.demo.manufacturer.carmodel.ManufacturerCarmodel',
     'cat.angular.demo.manufacturer.industry.ManufacturerIndustry',
     'cat.angular.demo.manufacturer.carmodel.variation.ManufacturerCarmodelVariation',
+    'cat.angular.demo.samples.SamplesModule',
     'cat.demo.manufacturer.ManufacturerDetailsController'])
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider.state('index', {

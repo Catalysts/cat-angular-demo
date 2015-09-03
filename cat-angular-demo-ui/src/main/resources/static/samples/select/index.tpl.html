@@ -1,0 +1,34 @@
+<div ng-controller="SamplesController as samples">
+    <h1>cat-select samples</h1>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Array</div>
+        <div class="panel-body">
+            <h3>Basic</h3>
+            <div class="well">Selected: {{selectedArrayBasic}}</div>
+            <cat-select options="{ endpoint: staticArrayBasic }" id="staticBasic" ng-model="selectedArrayBasic"
+                        class="form-control"></cat-select>
+
+            <h3>Function</h3>
+            <div class="well">Selected: {{selectedFunction}}</div>
+            <cat-select options="{ endpoint: staticFunction }" id="staticFunction" ng-model="selectedFunction"
+                        class="form-control"></cat-select>
+
+            <h3>Filtered</h3>
+            <div class="well">Selected: {{selectedArrayFilterd}}</div>
+            <cat-select options="staticArrayFiltered" id="staticFiltered" ng-model="selectedArrayFilterd"
+                        class="form-control"></cat-select>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Endpoints</div>
+        <div class="panel-body">
+            <h3>Named</h3>
+            <div class="well">Selected: {{selectedEndpointNamed}}</div>
+            <cat-select options="{ endpoint: 'countries' }" id="endpointNamed" ng-model="selectedEndpointNamed"
+                        class="form-control"></cat-select>
+        </div>
+    </div>
+
+</div>
