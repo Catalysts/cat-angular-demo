@@ -15,6 +15,7 @@ app.config(function (catViewServiceProvider) {
     // The listAndDetailView function is going to use this model for the endpoint.
     window.cat.models['Country'] = Country;
 
+    // In here the actual magic happens, the endpoint is created, the states are registered.
     catViewServiceProvider.listAndDetailView('', 'Country', {
         url: 'countries'
     });
@@ -30,6 +31,8 @@ app.config(function (catViewServiceProvider) {
 app.controller('CountryController', ['$scope', 'catListDataLoadingService', function ($scope, catListDataLoadingService) {
 
     function reloadList() {
+        // We are going to use the list's endpoint and the used searchRequest.
+        // Due to this we are able to keep filtering, sorting and paging as it is.
         catListDataLoadingService.load($scope.listData.endpoint, $scope.listData.searchRequest).then(
             function (data) {
                 _.assign($scope.listData, data);
@@ -37,6 +40,8 @@ app.controller('CountryController', ['$scope', 'catListDataLoadingService', func
         );
     }
 
+    // Called form the template.
+    // Update the current country and reload the list.
     $scope.toggleState = function () {
         var dataCopy = angular.copy(this.data);
         dataCopy.disabled = !dataCopy.disabled;
