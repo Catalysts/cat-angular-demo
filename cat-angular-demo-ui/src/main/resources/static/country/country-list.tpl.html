@@ -1,0 +1,14 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th cat-sortable="name">Name</th>
+        <th cat-sortable="author">Disabled</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="data in listData.collection">
+        <td><a ui-sref="Country.detail({id: data.id})">{{::data.name}}</a></td>
+        <td>{{::data.disabled}}</td>
+    </tr>
+    </tbody>
+</table>

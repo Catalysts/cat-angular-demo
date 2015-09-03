@@ -16,7 +16,7 @@ app.controller('ManufacturerDetailsController', ['$scope', 'catApiService', func
     // Config for the cat-select
     $scope.countriesConfig = {
         // use the endpoint, registered in country/country-module.js
-        endpoint: catApiService.countries,
+        endpoint: catApiService.country,
 
         // [OPTIONAL] searchRequestAdpater: apply changes to the searchRequest prior to search execution
         //searchRequestAdpater: function (searchRequest) {

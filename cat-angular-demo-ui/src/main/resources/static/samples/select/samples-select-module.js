@@ -1,6 +1,20 @@
 var app = angular.module('cat.angular.demo.samples.select.SelectModule', [
-    'cat.demo.country.CountryModule'
 ]);
+
+// register the endpoint (countriesSelect)
+app.config(function (catApiServiceProvider) {
+
+    function Country(data) {
+        angular.extend(this, data);     //maps all the data properties
+    }
+
+    // an endpoint, just for demonstration
+    // we could also use the existing endpoint from Module:  'cat.demo.country.CountryModule'
+    catApiServiceProvider.endpoint('countriesSelect', {
+        url: 'countries',
+        model: Country
+    });
+});
 
 
 function SelectSamplesController($scope, catBreadcrumbsService) {

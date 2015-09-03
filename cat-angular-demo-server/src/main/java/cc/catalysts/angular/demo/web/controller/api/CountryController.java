@@ -6,6 +6,8 @@ import cc.catalysts.angular.spring.api.AbstractCrudlRestApi;
 import cc.catalysts.angular.spring.dto.NamedDto;
 import cc.catalysts.angular.spring.dto.PageDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,22 +28,22 @@ public class CountryController extends AbstractCrudlRestApi<CountryDto, CountryD
     }
 
     @Override
-    public CountryDto create(CountryDto dto) {
+    public CountryDto create(@RequestBody CountryDto dto) {
         return countryService.create(dto);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(@PathVariable("id")Long id) {
         countryService.delete(id);
     }
 
     @Override
-    public CountryDto get(Long id) {
+    public CountryDto get(@PathVariable("id") Long id) {
         return countryService.get(id);
     }
 
     @Override
-    public NamedDto<Long> info(Long id) {
+    public NamedDto<Long> info(@PathVariable("id")Long id) {
         return null;
     }
 
@@ -56,7 +58,7 @@ public class CountryController extends AbstractCrudlRestApi<CountryDto, CountryD
     }
 
     @Override
-    public CountryDto update(Long id, CountryDto dto) {
+    public CountryDto update(@PathVariable("id") Long id, @RequestBody CountryDto dto) {
         return countryService.update(id, dto);
     }
 }
