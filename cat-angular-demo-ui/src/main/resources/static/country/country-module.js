@@ -1,3 +1,10 @@
+/**
+ * CRUDL functionality for countries.
+ *
+ * @author Michael Mittermayr
+ * @type {module}
+ */
+
 var app = angular.module('cat.demo.country.CountryModule', []);
 
 // Model
@@ -6,28 +13,44 @@ function Country(data) {
 }
 
 // Register CRUDL functionality + endpoint
-// This also registers the states:
-// * country.list
-// * country.detail
 app.config(function (catViewServiceProvider) {
 
     // We want to put our model in the list used by the defaultModelResolver.
     // The listAndDetailView function is going to use this model for the endpoint.
+    //
+    // Attention: In order to make this work correctly, the 'window.cat.util.defaultModelResolver' needs
+    // to check this map for models. (Note: Although this would be the default behaviour, it has been changed in demo.js)
     window.cat.models['Country'] = Country;
 
     // In here the actual magic happens, the endpoint is created, the states are registered.
+    //
+    // States:
+    // - Country.list
+    // - Country.details
+    //
+    // In addition to make things work, we need at least the following three template files:
+    // - country-details-edit.tpl.html
+    // - country-details-view.tpl.html
+    // - country-list.tpl.html
+    //
+    // Again, the files have to match the required naming schema (replace country by your own endpoint's name).
     catViewServiceProvider.listAndDetailView('', 'Country', {
         url: 'countries'
     });
 });
 
-// The listAndDetailView would work without a specific controller implementation.
-// However, as we would like to extend the existing controller we need to create our own.
-// Besides adding new functionality, we could also extend/change existing functions.
+// The listAndDetailView would work without specific controller implementations
+// by using the existing generic implementation provided by cat-angular.
 //
-// IMPORTANT: The listAndDetailView finds the controllers by their name.
+// However, as we would like to extend the existing list controller we need to create our own.
+// The controller will automatically extend from the generic implementation.
+//
+// NOTE: Besides adding new functionality, we could also extend/change existing functions.
+//
+// IMPORTANT: The listAndDetailView detects controllers by their name.
 // - CountryController          -- list entries
 // - CountryDetailsController   -- view/edit single entry
+//
 app.controller('CountryController', ['$scope', 'catListDataLoadingService', function ($scope, catListDataLoadingService) {
 
     function reloadList() {
