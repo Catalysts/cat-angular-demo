@@ -49,6 +49,13 @@
             <cat-select options="formatFunction"  id="customized" ng-model="selectedCustomized"
                         class="form-control"></cat-select>
         </div>
+
+        <div class="panel-body">
+            <h3>pre selected item</h3>
+            <div class="well">Selected: {{selectedItemPreSelected}}</div>
+            <cat-select options="preSelectedConfig" id="preSelected" ng-model="selectedItemPreSelected"
+                        class="form-control"></cat-select>
+        </div>
     </div>
 
 </div>
