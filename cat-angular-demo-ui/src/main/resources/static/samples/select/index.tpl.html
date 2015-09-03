@@ -31,4 +31,24 @@
         </div>
     </div>
 
+    <div class="panel panel-default">
+        <div class="panel-heading">Select Config Provider</div>
+        <div class="panel-body">
+            <h3>Config</h3>
+            <div class="well">Selected: {{selectedConfigProvider}}</div>
+            <cat-select config="samplesConfig" id="configProvider" ng-model="selectedConfigProvider"
+                        class="form-control"></cat-select>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Customization</div>
+        <div class="panel-body">
+            <h3>Formatting</h3>
+            <div class="well">Selected: {{selectedCustomized}}</div>
+            <cat-select options="formatFunction"  id="customized" ng-model="selectedCustomized"
+                        class="form-control"></cat-select>
+        </div>
+    </div>
+
 </div>

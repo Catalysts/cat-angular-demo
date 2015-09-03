@@ -16,6 +16,18 @@ app.config(function (catApiServiceProvider) {
     });
 });
 
+// countriesConfigProvider
+app.config(function(catSelectConfigServiceProvider) {
+
+    // We are going to register the named config.
+    // By doing so, we are able to use the same config several times.
+    catSelectConfigServiceProvider.config('samplesConfig', {
+        endpoint: 'countriesSelect',
+        'ui-select2': {     // include some ui-select2 specific settings
+            allowClear: true
+        }
+    });
+});
 
 function SelectSamplesController($scope, catBreadcrumbsService) {
 
@@ -34,18 +46,19 @@ function SelectSamplesController($scope, catBreadcrumbsService) {
 
 
     // Sample: Array -> Basic
+    // Array as endpoint.
     $scope.staticArrayBasic = staticArray;
 
     // Sample: Array -> Function
-
+    // Function as endpoint.
     $scope.staticFunction = function (queryParams) {
         return queryParams.success({
             elements: staticArray
         });
-
     };
 
     // Sample: Array -> Filtered
+    // Setting a custom filter function.
     $scope.staticArrayFiltered = {
         endpoint: staticArray,
         filter: function (item, index, array) {
@@ -53,6 +66,21 @@ function SelectSamplesController($scope, catBreadcrumbsService) {
         }
     };
 
-};
+    // Sample: Custom formatting function
+    $scope.formatFunction = {
+        endpoint: staticArray,
+        'ui-select2': {
+            // the text used for the select list items
+            formatResult: function(obj) {
+                return obj.name + (obj.city ? ' (City)' : ' (Town)');
+            },
+            // the text used for the selected item
+            formatSelection: function (obj) {
+                return obj.name;
+            }
+        }
+    };
+
+}
 
 app.controller('SamplesController', ['$scope', 'catBreadcrumbsService', SelectSamplesController]);
