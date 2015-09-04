@@ -1,0 +1,27 @@
+<div class="col-md-3">
+    <!--TODO: not yet working, server part missing-->
+    <cat-facets
+            names="{'name': 'Name', 'code': 'Code'}"></cat-facets>
+</div>
+<div class="col-md-9">
+    <table class="table">
+        <thead>
+        <tr>
+            <th cat-sortable="name"><span cat-i18n="cat.angular.demo.country.name">Name</span></th>
+            <th cat-sortable="code"><span cat-i18n="cat.angular.demo.country.code">Code</span></th>
+            <th cat-sortable="disabled"><span cat-i18n="cat.angular.demo.country.disabled">Disabled</span></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="data in listData.collection">
+            <td><a ui-sref="Country.detail({id: data.id})">{{::data.name}}</a></td>
+            <td>{{::data.code}}</td>
+            <td>
+                <a ng-click="toggleState()" href="#">
+                    <cat-checkbox checked="data.disabled" ng-click="toggleDisabled"></cat-checkbox>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

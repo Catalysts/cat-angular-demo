@@ -1,7 +1,7 @@
 <div class="form-horizontal">
 
     <div cat-input-group label="Name" name="name">
-        <input id="name" ng-model="editDetail.name" class="form-control" />
+        <input cat-autofocus="" id="name" ng-model="editDetail.name" class="form-control"/>
     </div>
 
     <div cat-input-group label="Founding Date:" name="foundingDate">
@@ -11,16 +11,18 @@
                    ng-model-options="{getterSetter: true}"
                    datepicker-popup
                    is-open="foundingDateOpen"
-                   datepicker-options="dateOptions" />
+                   datepicker-options="dateOptions"/>
 
               <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="foundingDateOpen = true"><i class="glyphicon glyphicon-calendar"></i></button>
+                <button type="button" class="btn btn-default" ng-click="foundingDateOpen = true"><i
+                        class="glyphicon glyphicon-calendar"></i></button>
               </span>
         </div>
     </div>
 
     <div cat-input-group label="Country" name="countryCode">
-        <input id="countryCode" ng-model="editDetail.countryCode" class="form-control" />
+        <cat-select options="countriesConfig" id="countryCode" ng-model="editDetail.country"
+                    class="form-control"></cat-select>
     </div>
 
 </div>

@@ -1,8 +1,8 @@
 package cc.catalysts.angular.demo.entity;
 
 import cc.catalysts.angular.spring.entity.AbstractNamed;
-import javax.persistence.Entity;
 
+import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 

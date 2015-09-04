@@ -2,6 +2,8 @@ angular.module('demo', ['cat', 'cat.template',
     'cat.angular.demo.manufacturer.carmodel.ManufacturerCarmodel',
     'cat.angular.demo.manufacturer.industry.ManufacturerIndustry',
     'cat.angular.demo.manufacturer.carmodel.variation.ManufacturerCarmodelVariation',
+    'cat.angular.demo.samples.SamplesModule',
+    'cat.angular.demo.country.CountryModule',
     'cat.demo.manufacturer.ManufacturerDetailsController'])
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider.state('index', {
@@ -14,6 +16,7 @@ angular.module('demo', ['cat', 'cat.template',
         $urlRouterProvider.otherwise('/index');
     }])
     .config(['catViewServiceProvider', function (catViewServiceProvider) {
+        var baseImpl = window.cat.util.defaultModelResolver;
         window.cat.util.defaultModelResolver = function (name) {
             if (name === 'ManufacturerCarModel') {
                 return function ManufacturerCarModel(data) {
@@ -46,6 +49,13 @@ angular.module('demo', ['cat', 'cat.template',
                 };
             }
 
+            // ask underlying resolver for model
+            var baseResult = baseImpl(name);
+            if (!!baseResult) {
+                return baseResult;
+            }
+
+            // fallback
             return function (data) {
                 _.extend(this, data);
             };

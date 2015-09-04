@@ -1,0 +1,13 @@
+<div class="form-horizontal">
+    <div cat-input-group label="Name" name="name">
+        <input cat-autofocus="" id="name" ng-model="editDetail.name" class="form-control"/>
+    </div>
+
+    <div cat-input-group label="Code" name="code">
+        <input id="code" ng-model="editDetail.code" class="form-control"/>
+    </div>
+
+    <div ng-if="exists" cat-input-group label="Disabled" name="disabled">
+        <input type="checkbox" id="author" ng-model="editDetail.disabled" class=""/>
+    </div>
+</div>

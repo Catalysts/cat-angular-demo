@@ -2,7 +2,6 @@ package cc.catalysts.angular.demo.web.controller.api;
 
 import cc.catalysts.angular.demo.dto.VariationDto;
 import cc.catalysts.angular.demo.service.VariationService;
-import cc.catalysts.angular.spring.api.AbstractCrudlRestApi;
 import cc.catalysts.angular.spring.core.SearchRequest;
 import cc.catalysts.angular.spring.dto.NamedDto;
 import cc.catalysts.angular.spring.dto.PageDto;
