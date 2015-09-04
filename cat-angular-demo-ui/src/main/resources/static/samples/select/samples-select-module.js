@@ -85,15 +85,7 @@
         //Sample: Pre selected item
         $scope.selectedItemPreSelected = staticArray[1];
         $scope.preSelectedConfig = {
-            endpoint: staticArray,
-            'ui-select2': {
-                initSelection: function (element, callback) {
-                    // We need to use callback in order to apply the value from ng-model as selected item.
-                    // ATTENTION: we cannot access $scope in here
-                    // NOTE: We need to set ng-model as well in order to make this work.
-                    callback(staticArray[1]);
-                }
-            }
+            endpoint: staticArray
         };
     }
 
