@@ -20,7 +20,7 @@ gulp.task('browser-sync', function () {
         server: {
             baseDir: baseDirs,
             routes: {
-                "/webjars/cat-angular/0.0.47": "../../cat-angular/dist"
+                "/webjars/cat-angular/0.0.51": "../../cat-angular/dist"
             },
             middleware: function (req, res, next) {
                 if (req.url.match(/cat-angular.js$/)) {

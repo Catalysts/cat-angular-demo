@@ -1,5 +1,4 @@
 angular.module('demo', ['cat', 'cat.template',
-    'cat.angular.demo.TranslationModule',
     'cat.angular.demo.manufacturer.carmodel.ManufacturerCarmodel',
     'cat.angular.demo.manufacturer.industry.ManufacturerIndustry',
     'cat.angular.demo.manufacturer.carmodel.variation.ManufacturerCarmodelVariation',
