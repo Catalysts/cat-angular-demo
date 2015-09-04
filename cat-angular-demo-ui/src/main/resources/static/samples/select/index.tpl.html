@@ -1,20 +1,23 @@
-<div ng-controller="SamplesController as samples">
+<div ng-controller="SamplesSelectController as samples">
     <h1>cat-select samples</h1>
 
     <div class="panel panel-default">
         <div class="panel-heading">Array</div>
         <div class="panel-body">
             <h3>Basic</h3>
+
             <div class="well">Selected: {{selectedArrayBasic}}</div>
             <cat-select options="{ endpoint: staticArrayBasic }" id="staticBasic" ng-model="selectedArrayBasic"
                         class="form-control"></cat-select>
 
             <h3>Function</h3>
+
             <div class="well">Selected: {{selectedFunction}}</div>
             <cat-select options="{ endpoint: staticFunction }" id="staticFunction" ng-model="selectedFunction"
                         class="form-control"></cat-select>
 
             <h3>Filtered</h3>
+
             <div class="well">Selected: {{selectedArrayFilterd}}</div>
             <cat-select options="staticArrayFiltered" id="staticFiltered" ng-model="selectedArrayFilterd"
                         class="form-control"></cat-select>
@@ -25,6 +28,7 @@
         <div class="panel-heading">Endpoints</div>
         <div class="panel-body">
             <h3>Named</h3>
+
             <div class="well">Selected: {{selectedEndpointNamed}}</div>
             <cat-select options="{ endpoint: 'countriesSelect' }" id="endpointNamed" ng-model="selectedEndpointNamed"
                         class="form-control"></cat-select>
@@ -35,6 +39,7 @@
         <div class="panel-heading">Select Config Provider</div>
         <div class="panel-body">
             <h3>Config</h3>
+
             <div class="well">Selected: {{selectedConfigProvider}}</div>
             <cat-select config="samplesConfig" id="configProvider" ng-model="selectedConfigProvider"
                         class="form-control"></cat-select>
@@ -45,13 +50,15 @@
         <div class="panel-heading">Customization</div>
         <div class="panel-body">
             <h3>Formatting</h3>
+
             <div class="well">Selected: {{selectedCustomized}}</div>
-            <cat-select options="formatFunction"  id="customized" ng-model="selectedCustomized"
+            <cat-select options="formatFunction" id="customized" ng-model="selectedCustomized"
                         class="form-control"></cat-select>
         </div>
 
         <div class="panel-body">
             <h3>pre selected item</h3>
+
             <div class="well">Selected: {{selectedItemPreSelected}}</div>
             <cat-select options="preSelectedConfig" id="preSelected" ng-model="selectedItemPreSelected"
                         class="form-control"></cat-select>

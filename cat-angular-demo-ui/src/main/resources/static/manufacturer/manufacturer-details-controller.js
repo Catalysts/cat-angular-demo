@@ -1,7 +1,7 @@
 var app = angular.module('cat.demo.manufacturer.ManufacturerDetailsController', [
     'cat.angular.demo.manufacturer.carmodel.ManufacturerCarmodelController',
     'cat.angular.demo.manufacturer.industry.ManufacturerIndustryController',
-    'cat.demo.country.CountryModule'
+    'cat.angular.demo.country.CountryModule'
 ]);
 
 app.controller('ManufacturerDetailsController', ['$scope', 'catApiService', function ($scope, catApiService) {
