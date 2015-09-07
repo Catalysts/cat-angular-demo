@@ -60,4 +60,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <build>
+        <finalName>${project.groupId}.${project.artifactId}</finalName>
+    </build>
 </project>

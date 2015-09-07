@@ -68,9 +68,6 @@
                         <goals>
                             <goal>repackage</goal>
                         </goals>
-                        <configuration>
-                            <finalName>ROOT</finalName>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
