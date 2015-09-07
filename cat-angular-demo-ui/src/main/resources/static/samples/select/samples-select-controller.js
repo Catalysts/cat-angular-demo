@@ -59,6 +59,28 @@
         $scope.preSelectedConfig = {
             endpoint: staticArray
         };
+
+
+        // Sample: Infinite Scrolling
+        var pagingSource = [];
+
+        for (i = 0; i < 1000; i++) {
+            pagingSource.push({id: i, name: 'Nr.: ' + i});
+        }
+        var pagingSourceChunks = _.chunk(pagingSource, 30);
+
+        $scope.pagingSource = function (queryParams, page) {
+
+            var page = queryParams.data.page - 1;
+            var elements = pagingSourceChunks[page];
+
+            return queryParams.success({
+                elements: elements,
+                totalCount: pagingSource.length
+            });
+        };
+
+
     }
 
     app.controller('SamplesSelectController', ['$scope', 'catBreadcrumbsService', SamplesSelectController]);

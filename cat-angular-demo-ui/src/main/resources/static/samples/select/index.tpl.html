@@ -63,6 +63,13 @@
             <cat-select options="preSelectedConfig" id="preSelected" ng-model="selectedItemPreSelected"
                         class="form-control"></cat-select>
         </div>
-    </div>
 
+        <div class="panel-body">
+            <h3>Paging/Infinite Scrolling</h3>
+
+            <div class="well">Selected: {{selectedPaging}}</div>
+            <cat-select options="{endpoint: pagingSource}" id="paging" ng-model="selectedPaging"
+                        class="form-control"></cat-select>
+        </div>
+    </div>
 </div>
