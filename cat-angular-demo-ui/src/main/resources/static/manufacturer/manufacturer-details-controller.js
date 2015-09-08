@@ -1,4 +1,4 @@
-var app = angular.module('cat.demo.manufacturer.ManufacturerDetailsController', [
+var app = angular.module('cat.angular.demo.manufacturer.ManufacturerDetailsController', [
     'cat.angular.demo.manufacturer.carmodel.ManufacturerCarmodelController',
     'cat.angular.demo.manufacturer.industry.ManufacturerIndustryController',
     'cat.angular.demo.country.CountryModule'

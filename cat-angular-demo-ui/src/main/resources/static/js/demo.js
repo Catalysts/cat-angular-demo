@@ -1,10 +1,9 @@
 angular.module('demo', ['cat', 'cat.template',
-    'cat.angular.demo.manufacturer.carmodel.ManufacturerCarmodel',
-    'cat.angular.demo.manufacturer.industry.ManufacturerIndustry',
-    'cat.angular.demo.manufacturer.carmodel.variation.ManufacturerCarmodelVariation',
-    'cat.angular.demo.samples.SamplesModule',
+    'cat.angular.demo.book.BookModule',
     'cat.angular.demo.country.CountryModule',
-    'cat.demo.manufacturer.ManufacturerDetailsController'])
+    'cat.angular.demo.manufacturer.ManufacturerModule',
+    'cat.angular.demo.samples.SamplesModule'
+    ])
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider.state('index', {
             url: '/index',
@@ -15,99 +14,26 @@ angular.module('demo', ['cat', 'cat.template',
         $urlRouterProvider.when('', '/index');
         $urlRouterProvider.otherwise('/index');
     }])
-    .config(['catViewServiceProvider', function (catViewServiceProvider) {
+    .config(function () {
+
+        // we are going to extend the defaultModelResolver with the ability to return an anonymous model,
+        // in case the requested one is unknown
+        // NOTE: the default implementation would return undefined
         var baseImpl = window.cat.util.defaultModelResolver;
         window.cat.util.defaultModelResolver = function (name) {
-            if (name === 'ManufacturerCarModel') {
-                return function ManufacturerCarModel(data) {
-                    var that = this;
-                    _.extend(this, data);
 
-                    this.setParent = function (parent) {
-                        that.manufacturer = parent;
-                    }
-                };
-            }
-            else if (name === 'ManufacturerIndustry') {
-                return function ManufacturerIndustry(data) {
-                    var that = this;
-                    _.extend(this, data);
+            var result = baseImpl(name);
 
-                    this.setParent = function (parent) {
-                        that.manufacturer = parent;
-                    }
-                };
-            }
-            else if (name === 'ManufacturerCarModelVariation') {
-                return function ManufacturerCarModelVariation(data) {
-                    var that = this;
-                    _.extend(this, data);
-
-                    this.setParent = function (parent) {
-                        that.carModel = parent;
-                    }
-                };
+            if(!!result) {
+                return result;
             }
 
-            // ask underlying resolver for model
-            var baseResult = baseImpl(name);
-            if (!!baseResult) {
-                return baseResult;
-            }
-
-            // fallback
+            // fallback, return anonymous object
             return function (data) {
                 _.extend(this, data);
             };
         };
-
-        catViewServiceProvider.listAndDetailView('', 'Book', {});
-        //catViewServiceProvider.builder()
-        //    .name('Manufacturer')
-        //    .child('CarModel')
-        //    .icon('map-marker')
-        //    .parent()
-        //    .build();
-
-        catViewServiceProvider.listAndDetailView('', 'Manufacturer', {
-            endpoint: {
-                children: {
-                    carmodel: {
-                        url: 'carmodels',
-                        children: {
-                            variation: {
-                                url: 'variations'
-                            }
-                        }
-                    },
-                    industry: {
-                        url: 'industries'
-                    }
-                }
-            },
-            details: {
-                additionalViewTemplate: 'tabs',
-                additionalViewTemplateTabs: [
-                    {
-                        name: 'carmodel',
-                        icon: 'road'
-                    }, {
-                        name: 'industry',
-                        icon: 'globe'
-                    }
-                ]
-            }
-        });
-
-        catViewServiceProvider.listAndDetailView('', 'CarModel');
-        catViewServiceProvider.listAndDetailView('', 'Industry');
-        catViewServiceProvider.listAndDetailView('', 'Variation');
-    }])
-    .config(['catSelectConfigServiceProvider', function (catSelectConfigServiceProvider) {
-        catSelectConfigServiceProvider.config('manufacturer', {
-            endpoint: 'manufacturer'
-        });
-    }])
+    })
     .run(['$rootScope', '$globalMessages', 'catBreadcrumbsService', function ($rootScope, $globalMessages, catBreadcrumbsService) {
         $rootScope.messages = $globalMessages;
         $rootScope.breadcrumbs = catBreadcrumbsService;
