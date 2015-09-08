@@ -1,0 +1,15 @@
+<h2>
+    <span cat-i18n="{{catBaseListController.titleKey}}">{{catBaseListController.title}}</span>
+    <a class="btn btn-primary pull-right" ui-sref="{{catBaseListController.config.name}}.detail({id: 'new'})"
+       cat-element-visible="cat.base.new" cat-element-data="catBaseListController.config">
+        <span class="glyphicon glyphicon-plus"></span> <span cat-i18n="cc.catalysts.general.new">New</span>
+    </a>
+</h2>
+
+<cat-paginated search-props="{{catBaseListController.searchProps}}">
+    <ng-include src="catBaseListController.config.listTemplateUrl"></ng-include>
+</cat-paginated>
+
+<p>
+    This is a custom template for the list functionality. Take a look at 'book-module.js' to see how this is done.
+</p>
