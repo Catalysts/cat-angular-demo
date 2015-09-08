@@ -64,12 +64,12 @@
         // Sample: Infinite Scrolling
         var pagingSource = [];
 
-        for (i = 0; i < 1000; i++) {
+        for (var i = 0; i < 1000; i++) {
             pagingSource.push({id: i, name: 'Nr.: ' + i});
         }
-        var pagingSourceChunks = _.chunk(pagingSource, 30);
+        var pagingSourceChunks = _.chunk(pagingSource, 100);
 
-        $scope.pagingSource = function (queryParams, page) {
+        $scope.pagingSource = function (queryParams) {
 
             var page = queryParams.data.page - 1;
             var elements = pagingSourceChunks[page];
