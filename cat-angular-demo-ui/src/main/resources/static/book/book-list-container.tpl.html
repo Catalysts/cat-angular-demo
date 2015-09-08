@@ -5,7 +5,8 @@
         <span class="glyphicon glyphicon-plus"></span> <span cat-i18n="cc.catalysts.general.new">New</span>
     </a>
 </h2>
-
+<cat-page-size config="{sizes:[1,5,10,20,50,100], defaultSize: 10}"
+               list-data="catBaseListController.config.listData"></cat-page-size>
 <cat-paginated search-props="{{catBaseListController.searchProps}}">
     <ng-include src="catBaseListController.config.listTemplateUrl"></ng-include>
 </cat-paginated>
