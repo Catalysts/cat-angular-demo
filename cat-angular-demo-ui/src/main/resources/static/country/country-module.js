@@ -37,7 +37,11 @@
         //
         // Again, the files have to match the required naming schema (replace country by your own endpoint's name).
         catViewServiceProvider.listAndDetailView('', 'Country', {
-            url: 'countries'
+            url: 'countries',
+            // We would like to be able to have a filter for the list, besides the facet functionality.
+            list: {
+                searchProps: 'name'     // we could append additional properties (e.g.: 'name,code' to generate a filter for both, name and code)
+            }
         });
     }]);
 
