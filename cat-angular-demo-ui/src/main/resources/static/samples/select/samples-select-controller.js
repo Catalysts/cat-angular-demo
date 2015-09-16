@@ -16,7 +16,6 @@
             city: false
         }];
 
-
         // Sample: Array -> Basic
         // Array as endpoint.
         $scope.staticArrayBasic = staticArray;
@@ -38,6 +37,21 @@
             }
         };
 
+        $scope.selectedEmpty = {};
+        // Sample: Array -> Empty
+        $scope.staticEmpty = {
+            endpoint: staticArray,
+            'ui-select2': {
+                allowClear: true
+            }
+        };
+
+        // Sample: Array -> Function Empty
+        // empty object as result
+        $scope.staticFunctionEmpty = function (queryParams) {
+            return queryParams.success({});
+        };
+
         // Sample: Custom formatting function
         $scope.formatFunction = {
             endpoint: staticArray,
@@ -53,13 +67,11 @@
             }
         };
 
-
         //Sample: Pre selected item
         $scope.selectedItemPreSelected = staticArray[1];
         $scope.preSelectedConfig = {
             endpoint: staticArray
         };
-
 
         // Sample: Infinite Scrolling
         var pagingSource = [];
@@ -79,8 +91,6 @@
                 totalCount: pagingSource.length
             });
         };
-
-
     }
 
     app.controller('SamplesSelectController', ['$scope', 'catBreadcrumbsService', SamplesSelectController]);
