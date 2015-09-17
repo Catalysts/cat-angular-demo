@@ -1,0 +1,10 @@
+<div class="dropdown">
+    <label cat-i18n="cc.catalysts.pageSize.pageSize">Page Size</label>
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+        {{ selectedSize }}
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li ng-repeat="size in config.sizes"><a ng-click="setSize(size)">{{size}}</a></li>
+    </ul>
+</div>

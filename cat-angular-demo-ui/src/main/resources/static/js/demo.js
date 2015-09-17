@@ -2,8 +2,9 @@ angular.module('demo', ['cat', 'cat.template',
     'cat.angular.demo.book.BookModule',
     'cat.angular.demo.country.CountryModule',
     'cat.angular.demo.manufacturer.ManufacturerModule',
-    'cat.angular.demo.samples.SamplesModule'
-    ])
+    'cat.angular.demo.samples.SamplesModule',
+    'cat.directives.pageSize'
+])
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider.state('index', {
             url: '/index',
@@ -24,7 +25,7 @@ angular.module('demo', ['cat', 'cat.template',
 
             var result = baseImpl(name);
 
-            if(!!result) {
+            if (!!result) {
                 return result;
             }
 
