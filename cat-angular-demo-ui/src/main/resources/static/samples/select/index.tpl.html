@@ -21,6 +21,18 @@
             <div class="well">Selected: {{selectedArrayFilterd}}</div>
             <cat-select options="staticArrayFiltered" id="staticFiltered" ng-model="selectedArrayFilterd"
                         class="form-control"></cat-select>
+
+            <h3>Empty Model {}, allowClear</h3>
+
+            <div class="well">Selected: {{selectedEmpty}}</div>
+            <cat-select options="staticEmpty" id="staticEmpty" ng-model="selectedEmpty"
+                        class="form-control"></cat-select>
+
+            <h3>Empty Result List)</h3>
+
+            <div class="well">Selected: {{selectedFunctionEmpty}}</div>
+            <cat-select options="{ endpoint: staticFunctionEmpty }" id="functionEmpty" ng-model="selectedFunctionEmpty"
+                        class="form-control"></cat-select>
         </div>
     </div>
 
