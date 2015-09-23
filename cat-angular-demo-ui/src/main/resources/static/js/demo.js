@@ -8,7 +8,7 @@ angular.module('demo', ['cat', 'cat.template',
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider.state('index', {
             url: '/index',
-            template: '<h1>HOME</h1>'
+            templateUrl: 'index.tpl.html'
         });
     }])
     .config(['$urlRouterProvider', function ($urlRouterProvider) {
