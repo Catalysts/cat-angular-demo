@@ -1,0 +1,21 @@
+<div>
+    <h1>cat-form samples</h1>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">input-group</div>
+        <div class="panel-body">
+            <form class="form-horizontal" ng-controller="SamplesFormController" name="contactForm" novalidate>
+                <div cat-input-group label="Input without error message" name="author">
+                    <input id="author" ng-model="user.author" class="form-control"/>
+                </div>
+                <div cat-input-group label="Input with error message" name="name">
+                    <input id="name" ng-model="user.name" class="form-control"/>
+                </div>
+                <div cat-input-group label="" name="reset">
+                    <input type="button" class="btn btn-default" value="Reset" ng-click="reset()">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
